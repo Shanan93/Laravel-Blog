@@ -20,6 +20,16 @@ Route::get('/',[
     'as' => 'index'
 ]);
 
+Route::get('/results',function(Request $request){
+    $posts = \App\Post::where('tile','LIKE','%'.request('query').'%')->get();
+
+    return view('results')-with('posts',$posts)
+                          ->with('title','Search results :'.request('query'))
+                          ->with('settings' , \App\Settings::first())
+                          ->with('catgories', \App\Category::take(5)->get())
+                          ->with('query',request('query'));
+});                        
+
 Route::get('/post/{slug}',[
     'uses' => 'FrontEndController@singlePost',
     'as' => 'post.single'
