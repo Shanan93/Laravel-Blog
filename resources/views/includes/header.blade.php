@@ -30,7 +30,7 @@
                     </nav>
                     <ul class="nav-add">
                         <li class="search search_main" style="color: black; margin-top: 5px;">
-                            <a href="#" class="js-open-search">
+                            <a href="" class="js-open-search">
                                 <i class="seoicon-loupe"></i>
                             </a>
                         </li>

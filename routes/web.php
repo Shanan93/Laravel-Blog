@@ -20,13 +20,13 @@ Route::get('/',[
     'as' => 'index'
 ]);
 
-Route::get('/results',function(Request $request){
-    $posts = \App\Post::where('tile','LIKE','%'.request('query').'%')->get();
+Route::get('/results',function(){
+    $posts = \App\Post::where('title','LIKE','%'.request('query').'%')->get();
 
-    return view('results')-with('posts',$posts)
+    return view('results')->with('posts',$posts)
                           ->with('title','Search results :'.request('query'))
                           ->with('settings' , \App\Settings::first())
-                          ->with('catgories', \App\Category::take(5)->get())
+                          ->with('categories', \App\Category::take(5)->get())
                           ->with('query',request('query'));
 });                        
 
