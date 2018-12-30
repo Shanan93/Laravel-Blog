@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
@@ -53,8 +53,6 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-       
-
         $this->validate($request,[
 
             'title' => 'required',
@@ -62,9 +60,8 @@ class PostController extends Controller
             'content' => 'required',
             'category_id' => 'required',
             'tags' =>'required'
-
-
         ]);
+
 
         $featured = $request->featured;
 
@@ -78,7 +75,8 @@ class PostController extends Controller
             'content' =>$request->content,
             'featured' => 'uploads/posts/'.$featured_new_name,
             'category_id' =>$request->category_id,
-            'slug' =>str_slug($request->title)
+            'slug' =>str_slug($request->title),
+            'user_id' => Auth::id()
             
             ]);
 
@@ -165,14 +163,14 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-       $post = Post::find($id);
+        $post = Post::find($id);
+        $post->delete();
+        
+        Session::flash('success','The Post just trashed');
 
-       $post->delete();
-
-       Session::flash('success','The Post just trashed');
-
-       return redirect()->back();
+        return redirect()->back();
     }
+
 
     public function trashed(){
 
@@ -180,6 +178,7 @@ class PostController extends Controller
        
         return view('admin.posts.trashed')->with('posts',$posts );
     }
+
 
     public function kill($id){
 
