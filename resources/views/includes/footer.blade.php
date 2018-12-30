@@ -4,7 +4,7 @@
             <div class="info">
                 <div class="col-lg-6 col-lg-offset-3">
                     <div class="heading text-center">
-                        <h3 class="heading-title" >{{$settings->site_name}}}</h3>
+                        <h3 class="heading-title" >{{$settings->site_name}}</h3>
                         <div class="heading-line">
                             <span class="short-line"></span>
                             <span class="long-line"></span>
