@@ -66,7 +66,12 @@
                             </div>
                         </div>
 
-                        <div class="socials">Share:
+                        <div class="socials">
+
+                        <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+                        <div class="addthis_inline_share_toolbox"></div>
+                        
+                        <!--Share:
                             <a href="#" class="social__item">
                                 <i class="seoicon-social-facebook"></i>
                             </a>
@@ -81,7 +86,7 @@
                             </a>
                             <a href="#" class="social__item">
                                 <i class="seoicon-social-pinterest"></i>
-                            </a>
+                            </a> -->
                         </div>
 
                     </article>
